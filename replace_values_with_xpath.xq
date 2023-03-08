@@ -5,7 +5,7 @@ declare namespace xlink = "http://www.w3.org/1999/xlink";
 declare variable $ead as document-node()* := doc("path/to/file");
 
 (:don't change those that require id's, nmtokens, or controlled values:)
-let $nodes := $ead//(@*[not(matches(../name(), '^ead')) and not(matches(name(),'audience|id|type|normal|xlink|source|target|actuate|show|rules|render|code|level|type|calendar|era|continuation|sep|frame|align|charoff|^col|morerows|nameend|namest|tpattern'))]|text())
+let $nodes := $ead//(@*[not(matches(../name(), '^ead')) and not(matches(name(),'audience|id|type|normal|xlink|source|target|actuate|show|rules|^render|code|level|calendar|era|continuation|sep|frame|align|charoff|^col|morerows|nameend|namest|tpattern|parent'))]|text())
 
 for $node in $nodes 
 let $xpath := normalize-space(
@@ -20,3 +20,5 @@ let $xpath := normalize-space(
 	)
 
 return replace value of node $node with $xpath
+
+ 
